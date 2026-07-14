@@ -1,0 +1,210 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.s{font-size:11px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:14px 16px}
+h3{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:4px}
+p{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;margin-bottom:6px}
+.t-blue{background:#E6F1FB;color:#0C447C}
+.t-teal{background:#E1F5EE;color:#085041}
+.t-amber{background:#FAEEDA;color:#633806}
+.t-coral{background:#FAECE7;color:#712B13}
+.t-purple{background:#EEEDFE;color:#26215C}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+
+.timeline{margin:12px 0;position:relative}
+.tl-track{display:flex;align-items:center;gap:0;margin-bottom:8px}
+.tl-node{flex:1;text-align:center;position:relative;cursor:pointer}
+.tl-circle{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;margin:0 auto 4px;border:1.5px solid}
+.tl-line{position:absolute;top:15px;left:50%;width:100%;height:2px;z-index:0}
+.tl-node:last-child .tl-line{display:none}
+.tl-lbl{font-size:10px;color:var(--text-secondary);font-weight:500}
+
+.obs-circle{background:#E6F1FB;border-color:#378ADD;color:#0C447C}
+.int-circle{background:#E1F5EE;border-color:#1D9E75;color:#085041}
+.tl-obs-line{background:#B5D4F4}
+.tl-int-line{background:#9FE1CB}
+
+.tl-detail{background:var(--surface-1);border-radius:8px;padding:10px 12px;margin-top:4px;font-size:11px;color:var(--text-secondary);min-height:48px}
+.tl-detail strong{color:var(--text-primary)}
+
+.inst-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.inst-card{background:var(--surface-1);border-radius:8px;padding:10px 12px;border-left:3px solid}
+.inst-num{font-size:10px;font-weight:500;margin-bottom:2px}
+.inst-title{font-size:11px;font-weight:500;color:var(--text-primary);margin-bottom:2px}
+.inst-sub{font-size:10px;color:var(--text-muted)}
+
+.method-badge{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;border:0.5px solid var(--border);background:var(--surface-1);font-size:11px;font-weight:500;color:var(--text-secondary);margin:3px}
+
+.excl-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.excl-item{display:flex;align-items:flex-start;gap:6px;background:var(--surface-1);border-radius:8px;padding:8px 10px;flex:1;min-width:160px}
+.excl-dot{width:8px;height:8px;border-radius:50%;margin-top:3px;flex-shrink:0}
+</style>
+
+<div style="padding:8px 0 16px">
+<div class="s">Capítulo IV — Metodología de investigación</div>
+
+<div class="grid3" style="margin-bottom:12px">
+  <div class="card">
+    <div class="tag t-blue"><i class="ti ti-microscope" aria-hidden="true"></i> Tipo</div>
+    <h3>Aplicada – Tecnológica</h3>
+    <p>Parte de conocimientos consolidados de IoT y agronomía para implementar una solución real y medible en Chinchao.</p>
+  </div>
+  <div class="card">
+    <div class="tag t-teal"><i class="ti ti-chart-arrows-vertical" aria-hidden="true"></i> Nivel</div>
+    <h3>Explicativo</h3>
+    <p>Determina causas y efectos de la relación VI → VD. No solo describe: explica por qué y en qué medida.</p>
+  </div>
+  <div class="card">
+    <div class="tag t-amber"><i class="ti ti-ruler-2" aria-hidden="true"></i> Enfoque</div>
+    <h3>Cuantitativo</h3>
+    <p>Todos los indicadores son numéricos medibles: L/ha/evento, psi, θv %, t/ha, S/, kg CO₂eq.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:12px">
+  <div class="s">Diseño cuasi-experimental — serie temporal GE: O₁ → O₂ → X₁ → O₃ → X₂ → O₄ → X₃ → O₅</div>
+  <div class="timeline">
+    <div class="tl-track">
+      <div class="tl-node" onclick="showPhase(0)">
+        <div style="position:relative"><div class="tl-circle obs-circle">O₁</div><div class="tl-line tl-obs-line"></div></div>
+        <div class="tl-lbl">Pre-test 1</div>
+      </div>
+      <div class="tl-node" onclick="showPhase(1)">
+        <div style="position:relative"><div class="tl-circle obs-circle">O₂</div><div class="tl-line tl-obs-line"></div></div>
+        <div class="tl-lbl">Pre-test 2</div>
+      </div>
+      <div class="tl-node" onclick="showPhase(2)">
+        <div style="position:relative"><div class="tl-circle int-circle">X₁</div><div class="tl-line tl-int-line"></div></div>
+        <div class="tl-lbl">Instalación</div>
+      </div>
+      <div class="tl-node" onclick="showPhase(3)">
+        <div style="position:relative"><div class="tl-circle obs-circle">O₃</div><div class="tl-line tl-obs-line"></div></div>
+        <div class="tl-lbl">Post-X₁</div>
+      </div>
+      <div class="tl-node" onclick="showPhase(4)">
+        <div style="position:relative"><div class="tl-circle int-circle">X₂</div><div class="tl-line tl-int-line"></div></div>
+        <div class="tl-lbl">Activación</div>
+      </div>
+      <div class="tl-node" onclick="showPhase(5)">
+        <div style="position:relative"><div class="tl-circle obs-circle">O₄</div><div class="tl-line tl-obs-line"></div></div>
+        <div class="tl-lbl">Post-X₂</div>
+      </div>
+      <div class="tl-node" onclick="showPhase(6)">
+        <div style="position:relative"><div class="tl-circle int-circle">X₃</div><div class="tl-line tl-int-line"></div></div>
+        <div class="tl-lbl">Cosecha</div>
+      </div>
+      <div class="tl-node" onclick="showPhase(7)">
+        <div style="position:relative"><div class="tl-circle obs-circle">O₅</div></div>
+        <div class="tl-lbl">Post-test final</div>
+      </div>
+    </div>
+    <div class="tl-detail" id="phase-detail">
+      Toca cualquier fase para ver su descripción.
+    </div>
+  </div>
+  <div style="display:flex;gap:12px;margin-top:6px">
+    <span style="font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#E6F1FB;border:1.5px solid #378ADD;display:inline-block"></span>Observación (O)</span>
+    <span style="font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#E1F5EE;border:1.5px solid #1D9E75;display:inline-block"></span>Intervención (X)</span>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:12px">
+  <div class="s">8 instrumentos de recolección de datos</div>
+  <div class="inst-grid">
+    <div class="inst-card" style="border-color:#378ADD">
+      <div class="inst-num" style="color:#0C447C">Instrumento 01</div>
+      <div class="inst-title">Ficha diagnóstico situación hídrica</div>
+      <div class="inst-sub">VD1 · Documenta ausencia de riego + 200 L fumigación empírica · Pre-test O₁/O₂</div>
+    </div>
+    <div class="inst-card" style="border-color:#378ADD">
+      <div class="inst-num" style="color:#0C447C">Instrumento 02</div>
+      <div class="inst-title">Registro jornales y costos fumigación</div>
+      <div class="inst-sub">VD1 · Costos M.O., gasolina, CO₂ emitido · Pre-test O₁/O₂</div>
+    </div>
+    <div class="inst-card" style="border-color:#1D9E75">
+      <div class="inst-num" style="color:#085041">Instrumento 03</div>
+      <div class="inst-title">Ficha monitoreo edafoclimático IoT</div>
+      <div class="inst-sub">VD2 · θv, pH, T° suelo, T° amb., HR — 336 lecturas/semana · Continua</div>
+    </div>
+    <div class="inst-card" style="border-color:#1D9E75">
+      <div class="inst-num" style="color:#085041">Instrumento 03B</div>
+      <div class="inst-title">Ficha control fitosanitario + PSI</div>
+      <div class="inst-sub">VD2 · Presión 40–60 psi, consumo fumigación, nivel tanque · Continua</div>
+    </div>
+    <div class="inst-card" style="border-color:#7F77DD">
+      <div class="inst-num" style="color:#26215C">Instrumento 04</div>
+      <div class="inst-title">Ficha producción y calibre del fruto</div>
+      <div class="inst-sub">VD3 · 50 frutos/parcela · Vernier digital + balanza · Post-test cosecha</div>
+    </div>
+    <div class="inst-card" style="border-color:#7F77DD">
+      <div class="inst-num" style="color:#26215C">Instrumento 05</div>
+      <div class="inst-title">Cuestionario UTAUT (20 ítems)</div>
+      <div class="inst-sub">VD3 · Likert 1–5 · Alfa Cronbach ≥ 0.70 · n ≈ 15 productores · Post X₃</div>
+    </div>
+    <div class="inst-card" style="border-color:#EF9F27">
+      <div class="inst-num" style="color:#633806">Instrumento 06</div>
+      <div class="inst-title">Ficha técnica de implementación IoT</div>
+      <div class="inst-sub">VI · Estado de componentes, uptime, presión PSI, autonomía FV · Instalación</div>
+    </div>
+    <div class="inst-card" style="border-color:#EF9F27">
+      <div class="inst-num" style="color:#633806">Instrumento 07</div>
+      <div class="inst-title">Ficha CAPEX / OPEX y viabilidad</div>
+      <div class="inst-sub">VD4 · B/C, VAN, TIR, ROI, CO₂ evitado · Pre-implementación</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:12px">
+  <div class="s">Muestra — criterios de selección de parcelas piloto</div>
+  <div class="excl-row">
+    <div class="excl-item">
+      <span class="excl-dot" style="background:#1D9E75"></span>
+      <div><div style="font-size:11px;font-weight:500;color:var(--text-primary)">Inclusión</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px">Cultivo activo · pendiente ≤ 30° · fuente hídrica disponible · exposición solar ≥ 4 h/día · sin riego previo · consentimiento firmado</div></div>
+    </div>
+    <div class="excl-item">
+      <span class="excl-dot" style="background:#D85A30"></span>
+      <div><div style="font-size:11px;font-weight:500;color:var(--text-primary)">Exclusión</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px">Riego previo · cultivos mixtos &lt; 70 % Passiflora · sin consentimiento · lluvia intensa &gt; 10 mm/día · infestación severa Fusarium</div></div>
+    </div>
+  </div>
+  <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+    <div style="background:var(--surface-1);border-radius:8px;padding:8px 14px;text-align:center"><div style="font-size:20px;font-weight:500;color:var(--text-primary)">3</div><div style="font-size:10px;color:var(--text-muted)">parcelas piloto · 1 ha c/u</div></div>
+    <div style="background:var(--surface-1);border-radius:8px;padding:8px 14px;text-align:center"><div style="font-size:20px;font-weight:500;color:var(--text-primary)">≈ 15</div><div style="font-size:10px;color:var(--text-muted)">productores UTAUT (censo)</div></div>
+    <div style="background:var(--surface-1);border-radius:8px;padding:8px 14px;text-align:center"><div style="font-size:20px;font-weight:500;color:var(--text-primary)">30</div><div style="font-size:10px;color:var(--text-muted)">días de pre-test y post-test</div></div>
+    <div style="background:var(--surface-1);border-radius:8px;padding:8px 14px;text-align:center"><div style="font-size:20px;font-weight:500;color:var(--text-primary)">336</div><div style="font-size:10px;color:var(--text-muted)">lecturas IoT/semana/nodo</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="s">Análisis estadístico — plan de procesamiento</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+    <span class="method-badge"><i class="ti ti-chart-histogram" aria-hidden="true"></i> Shapiro-Wilk (normalidad)</span>
+    <span class="method-badge"><i class="ti ti-arrows-diff" aria-hidden="true"></i> t de Student / Wilcoxon pre/post</span>
+    <span class="method-badge"><i class="ti ti-arrows-right-left" aria-hidden="true"></i> Correlación Spearman</span>
+    <span class="method-badge"><i class="ti ti-greek" aria-hidden="true"></i> Alfa de Cronbach UTAUT</span>
+    <span class="method-badge"><i class="ti ti-currency-dollar" aria-hidden="true"></i> B/C · VAN · TIR · ROI</span>
+    <span class="method-badge"><i class="ti ti-leaf" aria-hidden="true"></i> CO₂ evitado (2.31 kg/L gasolina)</span>
+    <span class="method-badge"><i class="ti ti-brand-python" aria-hidden="true"></i> Python pandas + matplotlib</span>
+    <span class="method-badge"><i class="ti ti-table" aria-hidden="true"></i> SPSS v.26 / R v.4.3</span>
+  </div>
+</div>
+</div>
+
+<script>
+const phases=[
+  {t:'O₁ y O₂ — Línea base',d:'<strong>Qué se mide:</strong> ausencia de riego (confirmada), consumo de 200 L/ha/evento en preparación del caldo de fumigación, jornales de fumigación manual, CO₂ emitido (gasolina motofumigadora), tasa de incidencia de plagas/enfermedades, rendimiento actual 6.2 t/ha y calibre pre-test.'},
+  {t:'O₂ — Segunda medición pre-test',d:'Segunda observación de confirmación de la línea base. Permite calcular variabilidad intra-unidad antes de la intervención (desviación estándar de indicadores como θv y costos).'},
+  {t:'X₁ — Instalación de sensores IoT',d:'<strong>Qué se instala:</strong> red completa de sensores (SEN0114, E-201C, DS18B20, DHT22, YF-S201, HC-SR04, sensor PSI), microcontroladores ESP32, panel solar FV, batería, tanque de almacenamiento y plataforma ThingSpeak/Ubidots. Inicio del monitoreo sin actuación automática aún.'},
+  {t:'O₃ — Post-X₁: verificación del monitoreo',d:'<strong>Qué se verifica:</strong> θv en tiempo real, pH, T° suelo y ambiente, HR, nivel del tanque, conectividad y uptime del sistema. Ajuste de umbrales de alerta fitosanitaria. Sin actuación de electroválvulas aún.'},
+  {t:'X₂ — Activación riego + fumigación automatizada',d:'<strong>Qué se activa:</strong> subsistema de riego por aspersión (electroválvula riego NC 12V activada por θv < 55 % CC) y subsistema de fumigación automatizada (electroválvula fumigación NC 12V + sensor PSI 40–60 psi + motobomba eléctrica 1.5 HP).'},
+  {t:'O₄ — Post-X₂: impacto hídrico y fitosanitario',d:'<strong>Qué se mide:</strong> consumo de agua en fumigación automatizada (meta: 200 → 50 L/ha/evento), presión en línea durante eventos de fumigación (40–60 psi), primeros eventos de riego por aspersión y monitoreo del nivel del tanque (alerta < 20 %).'},
+  {t:'X₃ — Operación completa + cosecha + UTAUT',d:'Operación del sistema durante el período de cosecha. Recolección de frutos para medición de rendimiento y calibre. Aplicación presencial del cuestionario UTAUT (20 ítems, Likert 1–5) a n ≈ 15 productores del distrito.'},
+  {t:'O₅ — Post-test final: impacto completo',d:'<strong>Indicadores finales:</strong> rendimiento t/ha, % fruta exportable (⌀ ≥ 65 mm), CV diámetro ecuatorial, CO₂ evitado (kg CO₂eq/campaña), análisis financiero completo (CAPEX, OPEX, B/C, VAN, TIR, ROI) y Alfa de Cronbach del UTAUT.'},
+];
+function showPhase(i){
+  const d=document.getElementById('phase-detail');
+  d.innerHTML='<strong style="font-size:11px;color:var(--text-primary)">'+phases[i].t+'</strong><br><span style="font-size:11px">'+phases[i].d+'</span>';
+}
+</script>
